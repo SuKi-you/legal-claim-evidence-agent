@@ -1,0 +1,92 @@
+[
+  {
+    "id": "F001",
+    "input": "我老公天天殴打我，我想离婚。",
+    "expected_legal_fact_factors": ["家庭暴力"],
+    "expected_claims": ["离婚", "家暴 / 人身安全保护"],
+    "allowed_claims": ["离婚损害赔偿"],
+    "forbidden_claims": ["财产分割 / 房产处理"],
+    "notes": "用于测试家暴事实和明示离婚诉求。"
+  },
+  {
+    "id": "F002",
+    "input": "他经常推我、打我，但我一直没有报警，也没有去医院，我现在很害怕。",
+    "expected_legal_fact_factors": ["家庭暴力"],
+    "expected_claims": ["家暴 / 人身安全保护"],
+    "allowed_claims": ["离婚", "离婚损害赔偿"],
+    "forbidden_claims": ["财产分割 / 房产处理"],
+    "notes": "用于测试没有报警或就医记录时，仍能识别家暴线索，但不应虚构证据。"
+  },
+  {
+    "id": "F003",
+    "input": "我们已经分居两年多了，基本没有联系，我想起诉离婚。",
+    "expected_legal_fact_factors": ["分居"],
+    "expected_claims": ["离婚"],
+    "allowed_claims": [],
+    "forbidden_claims": ["家暴 / 人身安全保护", "出轨 / 婚内过错"],
+    "notes": "用于测试长期分居事实与离婚诉求。"
+  },
+  {
+    "id": "F004",
+    "input": "我发现我老婆外面有人，还和第三者同居，我想离婚。",
+    "expected_legal_fact_factors": ["出轨", "第三者"],
+    "expected_claims": ["离婚", "出轨 / 婚内过错"],
+    "allowed_claims": ["离婚损害赔偿"],
+    "forbidden_claims": ["家暴 / 人身安全保护"],
+    "notes": "用于测试婚外情、第三者和离婚诉求。"
+  },
+  {
+    "id": "F005",
+    "input": "对方说我出轨，但我没有出轨，我只是想咨询这种情况下该怎么办。",
+    "expected_legal_fact_factors": ["否认出轨"],
+    "expected_claims": [],
+    "allowed_claims": ["离婚"],
+    "forbidden_claims": ["出轨 / 婚内过错", "离婚损害赔偿", "家暴 / 人身安全保护"],
+    "notes": "用于测试明确否认出轨时避免误判为婚内过错。"
+  },
+  {
+    "id": "F006",
+    "input": "我丈夫给小三转了二十多万，还买了首饰，我想把这些钱追回来。",
+    "expected_legal_fact_factors": ["给第三者转账", "第三者"],
+    "expected_claims": ["追回配偶赠与第三者的夫妻共同财产"],
+    "allowed_claims": ["出轨 / 婚内过错", "财产分割 / 房产处理"],
+    "forbidden_claims": ["家暴 / 人身安全保护"],
+    "notes": "用于测试第三者赠与或转账追回场景。"
+  },
+  {
+    "id": "F007",
+    "input": "孩子从出生到现在一直是我带，对方很少管孩子，我想让孩子继续跟我生活。",
+    "expected_legal_fact_factors": ["子女长期照顾"],
+    "expected_claims": ["子女抚养权"],
+    "allowed_claims": ["抚养费", "离婚"],
+    "forbidden_claims": ["财产分割 / 房产处理", "出轨 / 婚内过错"],
+    "notes": "用于测试长期照顾事实与抚养权诉求。"
+  },
+  {
+    "id": "F008",
+    "input": "离婚后孩子跟我，对方一直不给抚养费，我想让他支付抚养费。",
+    "expected_legal_fact_factors": ["抚养费", "子女抚养安排"],
+    "expected_claims": ["抚养费"],
+    "allowed_claims": ["子女抚养权"],
+    "forbidden_claims": ["家暴 / 人身安全保护", "出轨 / 婚内过错"],
+    "notes": "用于测试抚养费诉求以及与抚养权的边界。"
+  },
+  {
+    "id": "F009",
+    "input": "婚后买了一套房，还有房贷没有还完，现在离婚想知道房子和贷款怎么分。",
+    "expected_legal_fact_factors": ["婚后购房", "房贷", "夫妻共同财产"],
+    "expected_claims": ["离婚", "财产分割 / 房产处理"],
+    "allowed_claims": ["债务处理"],
+    "forbidden_claims": ["家暴 / 人身安全保护", "出轨 / 婚内过错"],
+    "notes": "用于测试房产、房贷和财产分割场景。"
+  },
+  {
+    "id": "F010",
+    "input": "我最近婚姻压力很大，不知道该怎么办。",
+    "expected_legal_fact_factors": [],
+    "expected_claims": [],
+    "allowed_claims": [],
+    "forbidden_claims": ["离婚", "家暴 / 人身安全保护", "出轨 / 婚内过错", "财产分割 / 房产处理", "子女抚养权"],
+    "notes": "用于测试信息不足时避免过度识别具体诉求。"
+  }
+]
